@@ -11,9 +11,25 @@ function RandomFace.RandomFace(mob,eq)
 	
 		local gender = mob:GetGender();
 		local face = eq.ChooseRandom(0,1,2,3,4,5,6,7);
+
+		t = {}
+		t["race"] = race;
+		t["texture"] = texture;
+		t["helmtexture"] = helmtexture;
+		t["gender"] = gender;
+		t["luclinface"] = face;
+		t["haircolor"]=0;
+		t["beardcolor"]=0;
+		t["eyecolor1"]=0;
+		t["eyecolor2"]=0;
+		t["hairstyle"]=0;
+		t["beard"]=0;
+		t["aa_title"]=0;
+		t["drakkin_heritage"]=0;
+		t["drakkin_tattoo"]=0;
+		t["drakkin_details"]=0;
 		
-		mob:SendIllusion(race, gender,texture,helmtexture, face,0,0,0,0,0,0,0);
-	
+		mob:SendIllusionPacket(t);
 	end
 end
 
