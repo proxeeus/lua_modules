@@ -5,7 +5,6 @@ function playerbot_calclevel.calc(current_zone)
 		-- levels 1 to 5
 	if	(current_zone == "freporte") or 
 		(current_zone == "freportw") or 
-		(current_zone == "freportn"	) or
 		(current_zone == "butcher") or -- Big zone, need to take multiple zone ranges into account
 		(current_zone == "misty") or 
 		(current_zone == "gfaydark") or 
@@ -13,7 +12,6 @@ function playerbot_calclevel.calc(current_zone)
 		(current_zone == "feerrott") or 
 		(current_zone == "tox") or 
 		(current_zone == "paineel") or 
-		(current_zone == "qeynos") or 
 		(current_zone == "qeynos2") or 
 		(current_zone == "qcat") or 
 		(current_zone == "steamfont") or
