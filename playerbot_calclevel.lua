@@ -2,7 +2,7 @@ local playerbot_calclevel = {}
 
 function playerbot_calclevel.calc(current_zone)
 
-		-- levels 1 to 5
+		-- levels 1 to 10
 	if	(current_zone == "freporte") or 
 		(current_zone == "freportw") or 
 		(current_zone == "butcher") or -- Big zone, need to take multiple zone ranges into account
@@ -18,7 +18,7 @@ function playerbot_calclevel.calc(current_zone)
 		(current_zone == "nektulos") or
 		(current_zone == "everfrost") -- Big zone, need to take multiple zone ranges into account
 	then
-		dynamic_level = math.random(1,5);
+		dynamic_level = math.random(1,10);
 	-- levels 5 to 15
 	elseif	(current_zone == "ecommons") or 
 			(current_zone == "commons") or 
