@@ -18,7 +18,7 @@ function playerbot_calclevel.calc(current_zone)
 		(current_zone == "nektulos") or
 		(current_zone == "everfrost") -- Big zone, need to take multiple zone ranges into account
 	then
-		dynamic_level = math.random(1,10);
+		dynamic_level = math.random(1,5);
 	-- levels 5 to 15
 	elseif	(current_zone == "ecommons") or 
 			(current_zone == "commons") or 
