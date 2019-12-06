@@ -1,7 +1,10 @@
 local playerbot_calclevel = {}
 
-function playerbot_calclevel.calc(current_zone)
+function playerbot_calclevel.calc(current_zone, overrideMaxLevel)
 
+	local minLevel = 1;
+	local maxLevel = 1;
+	
 		-- levels 1 to 10
 	if	(current_zone == "freporte") or 
 		(current_zone == "freportw") or 
@@ -19,7 +22,9 @@ function playerbot_calclevel.calc(current_zone)
 		(current_zone == "fieldofbone") or
 		(current_zone == "everfrost") -- Big zone, need to take multiple zone ranges into account
 	then
-		dynamic_level = math.random(1,5);
+			minLevel = 1;
+			maxLevel = 5;
+
 	-- levels 5 to 15
 	elseif	(current_zone == "ecommons") or 
 			(current_zone == "commons") or 
@@ -33,20 +38,24 @@ function playerbot_calclevel.calc(current_zone)
 			(current_zone == "swampofnohope") or
 			(current_zone == "lavastorm") 
 	then
-			dynamic_level = math.random(5,15);
+
+		minLevel = 5;
+		maxLevel = 15;
 	-- levels 10 to 20
 	elseif	(current_zone == "crushbone") or
 			(current_zone == "warslikswood") or
 			(current_zone == "guktop")
 	then
-			dynamic_level = math.random(10,20);
+			minLevel = 10;
+			maxLevel = 20;
 	-- levels 15 to 21
 	elseif	(current_zone == "oasis") or
 			(current_zone == "highpass") or
 			(current_zone == "kurn") or
 			(current_zone == "beholder")
 	then
-			dynamic_level = math.random(15,21);
+			minLevel = 15;
+			maxLevel = 21;
 	-- karanas are 10 to 30ish
 	elseif 	(current_zone == "northkarana") or
 			(current_zone == "eastkarana") or
@@ -58,18 +67,21 @@ function playerbot_calclevel.calc(current_zone)
 			(current_zone == "najena") or
 			(current_zone == "lakeofillomen")
 	then
-			dynamic_level = math.random(10,31);
+			minLevel = 10;
+			maxLevel = 31;
 	-- 25-35 range
 	elseif  (current_zone == "highkeep") or
 			(current_zone == "firiona") or
 			(current_zone == "dalnir")
 	then
-			dynamic_level = math.random(25,35);
+			minLevel = 25;
+			maxLevel = 35;
 	elseif 	(current_zone == "kithicor") or
 			(current_zone == "overthere") or
 			(current_zone == "timorous")
 	then
-			dynamic_level = math.random(15,50);	
+			minLevel = 15;
+			maxLevel = 50;
 	-- 35+ zones (and dungeons)
 	elseif (current_zone == "mistmoore") or
 		   (current_zone == "soldunga") or
@@ -77,7 +89,8 @@ function playerbot_calclevel.calc(current_zone)
 		   (current_zone == "cazicthule") or
 		   (current_zone == "frontiermtns")
 	then
-			dynamic_level = math.random(20,45);
+			minLevel = 20;
+			maxLevel = 45;
 	elseif (current_zone == "soldungb") or
 		   (current_zone == "soltemple") or
 		   (current_zone == "gukbottom") or
@@ -88,11 +101,13 @@ function playerbot_calclevel.calc(current_zone)
 		   (current_zone == "nurga") or
 		   (current_zone == "burningwood")
 	then
-			dynamic_level = math.random(35,50);
+			minLevel = 35;
+			maxLevel = 50;
 	elseif	(current_zone == "trakanon") or
 			(current_zone == "emeraldjungle")
 	then
-			dynamic_level = math.random(35,60);
+			minLevel = 35;
+			maxLevel = 60;
 	elseif	(current_zone == "sebilis") or
 			(current_zone == "chardok") or
 			(current_zone == "charasis") or
@@ -101,11 +116,18 @@ function playerbot_calclevel.calc(current_zone)
 			(current_zone == "hole") or
 			(current_zone == "skyfire")
 	then
-			dynamic_level = math.random(50,60);
+			minLevel = 50;
+			maxLevel = 60;
 	else
-		dynamic_level = math.random(10,50);	-- a default dynamic level for an uncovered zone
+			-- a default dynamic level for an uncovered zone
+			minLevel = 10;
+			maxLevel = 60;
 	end
 	
+	if(overrideMaxLevel) then
+		maxLevel = 60;
+	end
+	dynamic_level = math.random(minLevel, maxLevel);
 	return dynamic_level;
 end
 
