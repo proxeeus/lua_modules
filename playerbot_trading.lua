@@ -5,6 +5,10 @@ local playerbot_trading = {}
 ------------------------
 -- All the prices here are in Platinum.
 ------------------------
+
+---------------------------
+-- PlayerBot buying prices
+---------------------------
 bone_chips_stack_price 	= 20;		-- Stack of Bone Chips
 hq_wolf_pelt_price 		= 10;		-- High Quality Wolf Pelt
 mq_wolf_pelt_price 		= 5;		-- Medium Quality Wolf Pelt
@@ -18,9 +22,14 @@ hq_cat_pelt_price		= 10;		-- High Quality Cat Pelt
 mq_cat_pelt_price		= 5;		-- Medium Qualiy Cat Pelt
 lq_cat_pelt_price		= 2;		-- Low Quality Cat Pelt
 
-----------------------
--- Module entry point
-----------------------
+----------------------------
+-- PlayerBot selling prices
+----------------------------
+rebreather_price		= 1500;		-- Rebreather (tinkering, mainly for the Warrior epic quest)
+
+--------------------------------------------
+-- Module entry point for item-based trades
+--------------------------------------------
 function playerbot_trading.HandleTrade(e)
 	local item_lib = require("items");
 	
@@ -76,5 +85,26 @@ function playerbot_trading.HandleTrade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+function playerbot_trading.HandleSayTrade(e)
+	if(e.message:findi("buy a rebreather")) then
+		-- Gnomes (tinkering n shit)
+		if(e.self:GetRace() == 12) then
+			if(e.other:TakeMoneyFromPP(ConvertToPP(rebreather_price), true)) then
+				e.other:SummonItem(16889);
+				e.self:Say("My thanks for your patronage ! Enjoy your rebreather !");
+			else
+				e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Rebreathers usually go for %s platinum pieces.", rebreather_price));
+			end
+		end
+	end
+end
+
+---------------------------------------------------------------------------
+-- Used by TakeMoneyFromPP which takes a total amount expressed in copper
+-- 1 PP = 1000 copper
+---------------------------------------------------------------------------
+function ConvertToPP(amount)
+	return amount * 1000;
+end
 
 return playerbot_trading;
