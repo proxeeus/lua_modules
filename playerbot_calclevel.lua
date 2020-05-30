@@ -104,7 +104,17 @@ function playerbot_calclevel.calc(current_zone, overrideMaxLevel)
 			minLevel = 35;
 			maxLevel = 50;
 	elseif	(current_zone == "trakanon") or
-			(current_zone == "emeraldjungle")
+			(current_zone == "emeraldjungle") or
+			(current_zone == "iceclad") or
+			(current_zone == "eastwastes") or
+			(current_zone == "greatdivide") or
+			(current_zone == "wakening") or
+			(current_zone == "thurgadina") or
+			(current_zone == "thurgadinb") or
+			(current_zone == "crystal") or
+			(current_zone == "kael") or
+			(current_zone == "skyshrine") or
+			(current_zone == "cobaltscar")
 	then
 			minLevel = 35;
 			maxLevel = 60;
@@ -114,7 +124,9 @@ function playerbot_calclevel.calc(current_zone, overrideMaxLevel)
 			(current_zone == "karnor") or
 			(current_zone == "dreadlands") or
 			(current_zone == "hole") or
-			(current_zone == "skyfire")
+			(current_zone == "skyfire") or
+			(current_zone == "velketor") or
+			(current_zone == "westwastes") 
 	then
 			minLevel = 50;
 			maxLevel = 60;
