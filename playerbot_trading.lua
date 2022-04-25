@@ -46,6 +46,9 @@ flawed_topaz_price			= 500;			-- Flawed Topaz (Velious caster arms)
 crushed_flame_opal_price	= 350;			-- Crushed Flame Opal (Velious caster helm)
 crushed_jaundice_gem_price	= 250;			-- Crushed Jaundice Gem (Velious caster boots)
 
+spider_silk_price			= 2;			-- Spider Silk (single item)
+spiderling_silk_price		= 1;			-- Spiderling Silk (single item)
+
 
 --------------------------------------------
 -- Module entry point for item-based trades
@@ -53,6 +56,9 @@ crushed_jaundice_gem_price	= 250;			-- Crushed Jaundice Gem (Velious caster boot
 function playerbot_trading.HandleTrade(e)
 	local item_lib = require("items");
 	
+	----------------------------
+	-- Misc. Tradeskill Items
+	----------------------------
 	if(item_lib.check_turn_in(e.trade, {item1 = 13755})) then		-- HQ Wolf Skin
 		e.self:Say("Perfect ! Thank you for your patronage.");
 		e.other:GiveCash(0,0,0,hq_wolf_pelt_price);
@@ -86,6 +92,15 @@ function playerbot_trading.HandleTrade(e)
 	elseif(item_lib.check_turn_in(e.trade, {item1 = 12084})) then	-- LQ Cat Pelt
 		e.self:Say("Perfect ! Thank you for your patronage.");
 		e.other:GiveCash(0,0,0,lq_cat_pelt_price);
+	elseif(item_lib.check_turn_in(e.trade, {item1 = 13099})) then	-- Spiderling Silk
+		e.self:Say("Perfect ! Thank you for your patronage.");
+		e.other:GiveCash(0,0,0,spiderling_silk_price);	
+	elseif(item_lib.check_turn_in(e.trade, {item1 = 13041})) then	-- Spider Silk
+		e.self:Say("Perfect ! Thank you for your patronage.");
+		e.other:GiveCash(0,0,0,spider_silk_price);	
+	-------------------------------
+	-- End Misc. Tradeskill Items
+	-------------------------------
 	end
 	
 	-- Class-specific trade related stuff
@@ -116,6 +131,9 @@ function playerbot_trading.HandleSayTrade(e)
 				e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Rebreathers usually go for %s platinum pieces.", rebreather_price));
 			end
 		end
+		-- -----------------
+		--	Velious Gems
+		-- -----------------
 	elseif(e.message:findi("buy a flawless diamond")) then
 		if(e.other:TakeMoneyFromPP(ConvertToPP(flawless_diamond_price), true)) then
 			e.other:SummonItem(25814);
@@ -241,6 +259,27 @@ function playerbot_trading.HandleSayTrade(e)
 			e.self:Say("My thanks for your patronage ! Enjoy your crushed jaundice gem !");
 		else
 			e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Crushed jaundice gems usually go for %s platinum pieces.", crushed_jaundice_gem_price));
+		end
+		-- ---------------------
+		--	End Velious Gems
+		-- ---------------------
+		
+		-- ---------------------
+		-- 	Misc. trading items
+		-- ---------------------
+	elseif(e.message:findi("buy a spiderling silk")) then
+		if(e.other:TakeMoneyFromPP(ConvertToPP(spiderling_silk_price), true)) then
+			e.other:SummonItem(13099);
+			e.self:Say("My thanks for your patronage ! Enjoy your spiderling silk !");
+		else
+			e.self:Say("Uh, it looks like you don't have enough platinum ! Spiderling silks usually go for %s platinum pieces.", spider_silk_price);
+		end
+	elseif(e.message:findi("buy a spider silk")) then
+		if(e.other:TakeMoneyFromPP(ConvertToPP(spider_silk_price), true)) then
+			e.other:SummonItem(13041);
+			e.self:Say("My thanks for your patronage ! Enjoy your spider silk !");
+		else
+			e.self:Say("Uh, it looks like you don't have enough platinum ! Spider silks usually go for %s platinum pieces.", spider_silk_price);
 		end
 	end
 end
