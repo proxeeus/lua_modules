@@ -49,6 +49,9 @@ crushed_jaundice_gem_price	= 250;			-- Crushed Jaundice Gem (Velious caster boot
 spider_silk_price			= 2;			-- Spider Silk (single item)
 spiderling_silk_price		= 1;			-- Spiderling Silk (single item)
 
+giant_warrior_helmet_price	= 100;			-- Giant Warrior Helmet (single item, faction item)
+woven_frost_giant_beard_price	= 50;		-- Woven Frost Giant Beard (single item, faction item)
+storm_giant_toes_price		= 40;			-- Storm Giant Toes (single item, faction item)
 
 --------------------------------------------
 -- Module entry point for item-based trades
@@ -101,7 +104,23 @@ function playerbot_trading.HandleTrade(e)
 	-------------------------------
 	-- End Misc. Tradeskill Items
 	-------------------------------
+	
+	-------------------------------
+	-- Velious Faction Items
+	-------------------------------
+	elseif(item_lib.check_turn_in(e.trade, {item1 = 29062})) then	-- Giant Warrior Helmet
+		e.self:Say("Perfect ! Thank you for your patronage.");
+		e.other:GiveCash(0,0,0,giant_warrior_helmet_price);	
+	elseif(item_lib.check_turn_in(e.trade, {item1 = 30106})) then	-- Woven Frost Giant Beard
+		e.self:Say("Perfect ! Thank you for your patronage.");
+		e.other:GiveCash(0,0,0,woven_frost_giant_beard_price);	
+	elseif(item_lib.check_turn_in(e.trade, {item1 = 29124})) then	-- Storm Giant Toes
+		e.self:Say("Perfect ! Thank you for your patronage.");
+		e.other:GiveCash(0,0,0,storm_giant_toes_price);	
 	end
+	-------------------------------
+	-- End Velious Faction Items
+	-------------------------------
 	
 	-- Class-specific trade related stuff
 	-- Enchanter-specific turnins
@@ -280,6 +299,30 @@ function playerbot_trading.HandleSayTrade(e)
 			e.self:Say("My thanks for your patronage ! Enjoy your spider silk !");
 		else
 			e.self:Say("Uh, it looks like you don't have enough platinum ! Spider silks usually go for %s platinum pieces.", spider_silk_price);
+		end
+	-----------------------------
+	-- Velious Faction Items
+	-----------------------------
+	elseif(e.message:findi("buy a storm giant toe")) then
+		if(e.other:TakeMoneyFromPP(ConvertToPP(storm_giant_toes_price), true)) then
+			e.other:SummonItem(29124);
+			e.self:Say("My thanks for your patronage ! Enjoy your storm giant toe !");
+		else
+			e.self:Say("Uh, it looks like you don't have enough platinum ! Storm Giant toes usually go for %s platinum pieces.", storm_giant_toes_price);
+		end
+	elseif(e.message:findi("buy a woven frost giant beard")) then
+		if(e.other:TakeMoneyFromPP(ConvertToPP(woven_frost_giant_beard_price), true)) then
+			e.other:SummonItem(30106);
+			e.self:Say("My thanks for your patronage ! Enjoy your woven frost giant beard !");
+		else
+			e.self:Say("Uh, it looks like you don't have enough platinum ! Woven frost giant beards usually go for %s platinum pieces.", woven_frost_giant_beard_price);
+		end
+	elseif(e.message:findi("buy a giant warrior helmet")) then
+		if(e.other:TakeMoneyFromPP(ConvertToPP(giant_warrior_helmet_price), true)) then
+			e.other:SummonItem(29062);
+			e.self:Say("My thanks for your patronage ! Enjoy your giant warrior helmet !");
+		else
+			e.self:Say("Uh, it looks like you don't have enough platinum ! Giant warrior helmets usually go for %s platinum pieces.", giant_warrior_helmet_price);
 		end
 	end
 end
