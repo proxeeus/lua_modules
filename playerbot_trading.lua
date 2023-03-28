@@ -54,7 +54,8 @@ woven_frost_giant_beard_price	= 50;				-- Woven Frost Giant Beard (single item, 
 storm_giant_toes_price		= 40;					-- Storm Giant Toes (single item, faction item)
 
 velium_fire_wedding_ring_price = 400;				-- Velium Fire Wedding Ring (6/65 rings) Enchanter >= 44
-black_sapphire_velium_necklace_price = 1000;		-- Black Sapphire Velium Necklate (65/65 neck) Enchanter >= 44
+black_sapphire_velium_necklace_price = 1000;		-- Black Sapphire Velium Necklace (65/65 neck) Enchanter >= 44
+black_sapphire_electrum_earring_price = 400;		-- Black Sapphire Electrum Earring (35/25) Enchanter
 
 --------------------------------------------
 -- Module entry point for item-based trades
@@ -172,6 +173,17 @@ function playerbot_trading.HandleSayTrade(e)
 				e.self:Say("My thanks for your patronage ! Enjoy your black sapphire velium necklace !");
 			else
 				e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Black sapphire velium necklaces usually go for %s platinum pieces.", black_sapphire_velium_necklace_price));
+			end
+		else
+			e.self:Say("Uh, I'm sorry but I'm not able to provide you with such an item...");
+		end
+	elseif(e.message:findi("buy a black sapphire electrum earring")) then
+		if(e.self:GetClass() == 14)  then
+			if(e.other:TakeMoneyFromPP(ConvertToPP(black_sapphire_electrum_earring_price), true)) then
+				e.other:SummonItem(14701);
+				e.self:Say("My thanks for your patronage ! Enjoy your black sapphire electrum earring !");
+			else
+				e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Black sapphire electrum earrings usually go for %s platinum pieces.", black_sapphire_electrum_earring_price));
 			end
 		else
 			e.self:Say("Uh, I'm sorry but I'm not able to provide you with such an item...");
