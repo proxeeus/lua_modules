@@ -9,49 +9,52 @@ local playerbot_trading = {}
 ---------------------------
 -- PlayerBot buying prices
 ---------------------------
-bone_chips_stack_price 	= 20;		-- Stack of Bone Chips
-hq_wolf_pelt_price 		= 10;		-- High Quality Wolf Pelt
-mq_wolf_pelt_price 		= 5;		-- Medium Quality Wolf Pelt
-lq_wolf_pelt_price 		= 2;		-- Low Quality Wolf Pelt
-hq_bear_pelt_price 		= 10;		-- High Quality Bear Pelt
-mq_bear_pelt_price 		= 5;		-- Medium Quality Bear Pelt
-lq_bear_pelt_price 		= 2;		-- Low Quality Bear Pelt
-deathfist_belt_price 	= 5;		-- Deathfist Slashed Belt
-crushbone_belt_price	= 5;		-- Crushbone Belt
-hq_cat_pelt_price		= 10;		-- High Quality Cat Pelt
-mq_cat_pelt_price		= 5;		-- Medium Qualiy Cat Pelt
-lq_cat_pelt_price		= 2;		-- Low Quality Cat Pelt
+bone_chips_stack_price 	= 20;						-- Stack of Bone Chips
+hq_wolf_pelt_price 		= 10;						-- High Quality Wolf Pelt
+mq_wolf_pelt_price 		= 5;						-- Medium Quality Wolf Pelt
+lq_wolf_pelt_price 		= 2;						-- Low Quality Wolf Pelt
+hq_bear_pelt_price 		= 10;						-- High Quality Bear Pelt
+mq_bear_pelt_price 		= 5;						-- Medium Quality Bear Pelt
+lq_bear_pelt_price 		= 2;						-- Low Quality Bear Pelt
+deathfist_belt_price 	= 5;						-- Deathfist Slashed Belt
+crushbone_belt_price	= 5;						-- Crushbone Belt
+hq_cat_pelt_price		= 10;						-- High Quality Cat Pelt
+mq_cat_pelt_price		= 5;						-- Medium Qualiy Cat Pelt
+lq_cat_pelt_price		= 2;						-- Low Quality Cat Pelt
 
 ----------------------------
 -- PlayerBot selling prices
 ----------------------------
-rebreather_price			= 1500;			-- Rebreather (tinkering, mainly for the Warrior epic quest)
+rebreather_price			= 1500;					-- Rebreather (tinkering, mainly for the Warrior epic quest)
 
-flawless_diamond_price 		= 1000;			-- Flawless Diamond (Velious melee bp)
-flawed_sea_sapphire_price	= 750;			-- Flawless Sea Sapphire (Velious melee legs)
-flawed_emerald_price		= 500;			-- Flawed Emerald (Velious melee arms)
-crushed_coral_price			= 500;			-- Crushed Coral (Velious melee helm)
-crushed_topaz_price			= 350;			-- Crushed Topaz (Velious melee gloves / caster gloves)
-crushed_black_marble_price	= 350;			-- Crushed Black Marble (Velious melee boots)
-crushed_flame_emerald_price	= 250;			-- Crushed Flame Emerald (Velious melee bracer / priest boots)
-black_marble_price			= 1000;			-- Black Marble (Velious priest bp)
-chipped_onyx_sapphire_price	= 750;			-- Chipped Onyx Sapphire (Velious priest legs)
-jaundice_gem_price			= 500;			-- Jaundiced Gem (Velious priest arms)
-crushed_lava_ruby_price		= 350;			-- Crushed Lava Ruby (Velious priest gloves)
-crushed_opal_price			= 250;			-- Crushed Opal (Velious priest bracer)
-crushed_onyx_sapphire_price = 350;			-- Crushed Onyx Sapphire (Velious priest helm / Velious caster bracer)
-pristine_emerald_price		= 1000;			-- Pristine Emerald (Velious caster robe)
-nephrite_price				= 750;			-- Nephrite (Velious caster legs)
-flawed_topaz_price			= 500;			-- Flawed Topaz (Velious caster arms)
-crushed_flame_opal_price	= 350;			-- Crushed Flame Opal (Velious caster helm)
-crushed_jaundice_gem_price	= 250;			-- Crushed Jaundice Gem (Velious caster boots)
+flawless_diamond_price 		= 1000;					-- Flawless Diamond (Velious melee bp)
+flawed_sea_sapphire_price	= 750;					-- Flawless Sea Sapphire (Velious melee legs)
+flawed_emerald_price		= 500;					-- Flawed Emerald (Velious melee arms)
+crushed_coral_price			= 500;					-- Crushed Coral (Velious melee helm)
+crushed_topaz_price			= 350;					-- Crushed Topaz (Velious melee gloves / caster gloves)
+crushed_black_marble_price	= 350;					-- Crushed Black Marble (Velious melee boots)
+crushed_flame_emerald_price	= 250;					-- Crushed Flame Emerald (Velious melee bracer / priest boots)
+black_marble_price			= 1000;					-- Black Marble (Velious priest bp)
+chipped_onyx_sapphire_price	= 750;					-- Chipped Onyx Sapphire (Velious priest legs)
+jaundice_gem_price			= 500;					-- Jaundiced Gem (Velious priest arms)
+crushed_lava_ruby_price		= 350;					-- Crushed Lava Ruby (Velious priest gloves)
+crushed_opal_price			= 250;					-- Crushed Opal (Velious priest bracer)
+crushed_onyx_sapphire_price = 350;					-- Crushed Onyx Sapphire (Velious priest helm / Velious caster bracer)
+pristine_emerald_price		= 1000;					-- Pristine Emerald (Velious caster robe)
+nephrite_price				= 750;					-- Nephrite (Velious caster legs)
+flawed_topaz_price			= 500;					-- Flawed Topaz (Velious caster arms)
+crushed_flame_opal_price	= 350;					-- Crushed Flame Opal (Velious caster helm)
+crushed_jaundice_gem_price	= 250;					-- Crushed Jaundice Gem (Velious caster boots)
 
-spider_silk_price			= 2;			-- Spider Silk (single item)
-spiderling_silk_price		= 1;			-- Spiderling Silk (single item)
+spider_silk_price			= 2;					-- Spider Silk (single item)
+spiderling_silk_price		= 1;					-- Spiderling Silk (single item)
 
-giant_warrior_helmet_price	= 100;			-- Giant Warrior Helmet (single item, faction item)
-woven_frost_giant_beard_price	= 50;		-- Woven Frost Giant Beard (single item, faction item)
-storm_giant_toes_price		= 40;			-- Storm Giant Toes (single item, faction item)
+giant_warrior_helmet_price	= 100;					-- Giant Warrior Helmet (single item, faction item)
+woven_frost_giant_beard_price	= 50;				-- Woven Frost Giant Beard (single item, faction item)
+storm_giant_toes_price		= 40;					-- Storm Giant Toes (single item, faction item)
+
+velium_fire_wedding_ring_price = 400;				-- Velium Fire Wedding Ring (6/65 rings) Enchanter >= 44
+black_sapphire_velium_necklace_price = 1000;		-- Black Sapphire Velium Necklate (65/65 neck) Enchanter >= 44
 
 --------------------------------------------
 -- Module entry point for item-based trades
@@ -149,6 +152,29 @@ function playerbot_trading.HandleSayTrade(e)
 			else
 				e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Rebreathers usually go for %s platinum pieces.", rebreather_price));
 			end
+		end
+		-- Enchanter stuff n shit
+	elseif(e.message:findi("buy a velium fire wedding ring")) then
+		if((e.self:GetClass() == 14) and (e.self:GetLevel() >= 44)) then
+			if(e.other:TakeMoneyFromPP(ConvertToPP(velium_fire_wedding_ring_price), true)) then
+				e.other:SummonItem(30339);
+				e.self:Say("My thanks for your patronage ! Enjoy your velium fire wedding ring !");
+			else
+				e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Velium fire wedding rings usually go for %s platinum pieces.", velium_fire_wedding_ring_price));
+			end
+		else
+			e.self:Say("Uh, I'm sorry but I'm not able to provide you with such an item...");
+		end
+	elseif(e.message:findi("buy a black sapphire velium necklace")) then
+		if((e.self:GetClass() == 14) and (e.self:GetLevel() >= 44)) then
+			if(e.other:TakeMoneyFromPP(ConvertToPP(black_sapphire_velium_necklace_price), true)) then
+				e.other:SummonItem(30351);
+				e.self:Say("My thanks for your patronage ! Enjoy your black sapphire velium necklace !");
+			else
+				e.self:Say(string.format("Uh, it looks like you don't have enough platinum ! Black sapphire velium necklaces usually go for %s platinum pieces.", black_sapphire_velium_necklace_price));
+			end
+		else
+			e.self:Say("Uh, I'm sorry but I'm not able to provide you with such an item...");
 		end
 		-- -----------------
 		--	Velious Gems
