@@ -21,6 +21,7 @@ crushbone_belt_price	= 5;						-- Crushbone Belt
 hq_cat_pelt_price		= 10;						-- High Quality Cat Pelt
 mq_cat_pelt_price		= 5;						-- Medium Qualiy Cat Pelt
 lq_cat_pelt_price		= 2;						-- Low Quality Cat Pelt
+left_goblin_ear_price	= 25;						-- Left Goblin Ear (Highpass Faction)
 
 ----------------------------
 -- PlayerBot selling prices
@@ -105,6 +106,9 @@ function playerbot_trading.HandleTrade(e)
 	elseif(item_lib.check_turn_in(e.trade, {item1 = 13041})) then	-- Spider Silk
 		e.self:Say("Perfect ! Thank you for your patronage.");
 		e.other:GiveCash(0,0,0,spider_silk_price);	
+	elseif(item_lib.check_turn_in(e.trade, {item1 = 13790})) then	-- Left Goblin Ear
+		e.self:Say("Perfect ! Thank you for your patronage.");
+		e.other:GiveCash(0,0,0,left_goblin_ear_price);	
 	-------------------------------
 	-- End Misc. Tradeskill Items
 	-------------------------------
@@ -361,6 +365,16 @@ function playerbot_trading.HandleSayTrade(e)
 			e.self:Say("My thanks for your patronage ! Enjoy your giant warrior helmet !");
 		else
 			e.self:Say("Uh, it looks like you don't have enough platinum ! Giant warrior helmets usually go for %s platinum pieces.", giant_warrior_helmet_price);
+		end
+	----------------------------
+	-- Misc Faction Items
+	----------------------------
+	elseif(e.message:findi("buy a left goblin ear")) then
+		if(e.other:TakeMoneyFromPP(ConvertToPP(left_goblin_ear_price), true)) then
+			e.other:SummonItem(13790);
+			e.self:Say("My thanks for your patronage ! Enjoy your left goblin ear !");
+		else
+			e.self:Say("Uh, it looks like you don't have enough platinum ! Left goblin ears usually go for %s platinum pieces.", left_goblin_ear_price);
 		end
 	end
 end
