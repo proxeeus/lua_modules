@@ -51,6 +51,7 @@ spider_silk_price			= 2;					-- Spider Silk (single item)
 spiderling_silk_price		= 1;					-- Spiderling Silk (single item)
 
 giant_warrior_helmet_price	= 100;					-- Giant Warrior Helmet (single item, faction item)
+coldain_head_price			= 100;
 woven_frost_giant_beard_price	= 50;				-- Woven Frost Giant Beard (single item, faction item)
 storm_giant_toes_price		= 40;					-- Storm Giant Toes (single item, faction item)
 
@@ -125,6 +126,9 @@ function playerbot_trading.HandleTrade(e)
 	elseif(item_lib.check_turn_in(e.trade, {item1 = 29124})) then	-- Storm Giant Toes
 		e.self:Say("Perfect ! Thank you for your patronage.");
 		e.other:GiveCash(0,0,0,storm_giant_toes_price);	
+	elseif(item_lib.check_turn_in(e.trade, {item1 = 30081})) then	-- Coldain Head
+		e.self:Say("Perfect ! Thank you for your patronage.");
+		e.other:GiveCash(0,0,0,coldain_head_price);	
 	end
 	-------------------------------
 	-- End Velious Faction Items
@@ -365,6 +369,13 @@ function playerbot_trading.HandleSayTrade(e)
 			e.self:Say("My thanks for your patronage ! Enjoy your giant warrior helmet !");
 		else
 			e.self:Say("Uh, it looks like you don't have enough platinum ! Giant warrior helmets usually go for %s platinum pieces.", giant_warrior_helmet_price);
+		end
+	elseif(e.message:findi("buy a coldain head")) then
+		if(e.other:TakeMoneyFromPP(ConvertToPP(coldain_head_price), true)) then
+			e.other:SummonItem(30081);
+			e.self:Say("My thanks for your patronage ! Enjoy your coldain head !");
+		else
+			e.self:Say("Uh, it looks like you don't have enough platinum ! Coldain heads usually go for %s platinum pieces.", coldain_head_price);
 		end
 	----------------------------
 	-- Misc Faction Items
