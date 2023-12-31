@@ -1959,8 +1959,7 @@ function GenerateTierFiveMeleeLoot(e,eq)
 		end
 		
 		e.self:AddItem(eq.ChooseRandom(GenerateHighTierRoguePrimary(e,eq), GenerateLowerTierRoguePrimary(e,eq)), 1, true);
-		e.self:AddItem(eq.ChooseRandom(GenerateHighTierMeleeWeapon(e,eq) GenerateLowTierMeleeWeapon(e,eq)), 1, true);
-		-- e.self:AddItem(eq.ChooseRandom(GenerateHighTierRoguePrimary(e,eq), GenerateLowerTierRoguePrimary(e,eq)), 1, true);
+		e.self:AddItem(eq.ChooseRandom(GenerateHighTierRoguePrimary(e,eq), GenerateLowerTierRoguePrimary(e,eq)), 1, true);
 	end
 
 	-- Monk
