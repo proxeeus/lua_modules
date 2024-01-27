@@ -57,4 +57,26 @@ function NPC:RandomRoam(maxx,maxy,maxz,los)
 	end
 end
 			
-			
+-- Check the ground around the NPC for a dropped item and destroy it.  Returns true if object found
+function NPC:CheckGround(range)
+	
+	local id, ix, iy, iz;
+	local sx, sy, sz = self:GetX(), self:GetY(), self:GetZ();
+
+	local olist = eq.get_entity_list():GetObjectList();
+	range = tonumber(range) or 25;
+	
+	for obj in olist.entries do
+	
+		ix, iy, iz = obj:GetX(), obj:GetY(), obj:GetZ();
+		if ( (obj:GetItemID() > 0) and (obj:IsGroundSpawn() == false)
+			and ix - sx < range and ix - sx > -range
+			and iy - sy < range and iy - sy > -range
+			and iz - sz < range and iz - sz > -range
+		) then
+			obj:Depop();
+			return true;
+		end
+	end
+	return false;
+end			
